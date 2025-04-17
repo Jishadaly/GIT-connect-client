@@ -1,4 +1,3 @@
-import React from "react";
 import { GitHubRepo } from "../../types/index";
 import "./respositoryDetails.css"
 

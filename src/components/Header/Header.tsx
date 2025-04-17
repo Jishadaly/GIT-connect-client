@@ -6,7 +6,6 @@ import {   UserGitData } from "../../types/index";
 import { useAppDispatch, useAppSelector } from "../../Hooks/useStore";
 import "./header.css";
 import { FiSearch } from "react-icons/fi"; // for search icon
-import PrimaryButton from "../button/PrimaryBtn";
 import Loader from "../loader/Loader";
 
 const Header: React.FC = () => {
@@ -19,23 +18,26 @@ const Header: React.FC = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!username.trim()) return;
-
+  
     dispatch(setLoading(true));
     mutate(username.trim(), {
-      onSuccess: (response: { success: boolean; data: UserGitData }) => {
-        dispatch(setCurrentUser(response));
-        dispatch(setLoading(false))
+      onSuccess: (response: {data:UserGitData}) => {
+        console.log(response, "User Git Data");
+        dispatch(setCurrentUser(response.data)); // Assuming you store user data
+        dispatch(setLoading(false));
         navigate(`/`);
       },
       onError: () => {
         dispatch(setError("User not found or API error."));
-        dispatch(setLoading(false))
+        dispatch(setLoading(false));
       },
     });
   };
+  
+  
 
 
-
+if (isLoading) return <Loader/>
 
   return (
     <header className="header">

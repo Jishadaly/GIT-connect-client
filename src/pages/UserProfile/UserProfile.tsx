@@ -13,7 +13,7 @@ const UserProfile = () => {
 
   if(isLoading) return <Loader message="user feching"/>
 
-console.log(currentUser)
+console.log(currentUser , "fffffffffff")
 
   if (error) {
     return (
@@ -37,9 +37,9 @@ console.log(currentUser)
         <div style={{ padding: "2rem" }}>
         <UserProfileView
             user={currentUser.user}
-            repos={currentUser.repositories}
-            followersList={currentUser.followers}
-            followingList={currentUser.followers}
+            repos={currentUser.repos}
+            followersList={currentUser.followersList}
+            followingList={currentUser.followersList}
             onFollowersClick={() => {
             // implement followers modal/view if needed
             console.log("Followers clicked");

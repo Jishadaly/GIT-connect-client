@@ -1,47 +1,48 @@
 // components/UserList.tsx
 import { useNavigate } from "react-router-dom";
 import { useSearchUser } from "../../Hooks/api/useSearchUser";
-import { useAppDispatch, useAppSelector } from "../../Hooks/useStore";
-import { setCurrentUser, setError, setLoading } from "../../redux/slices/userSlice";
-import { UserGitData } from "../../types";
+import { useAppDispatch } from "../../Hooks/useStore";
+import { setCurrentUser, setError } from "../../redux/slices/userSlice";
+import { GitHubUser, UserGitData } from "../../types";
 import "./userList.css";
+import { useState } from "react";
+import Loader from "../loader/Loader";
 
 interface UserListProps {
-  users: {
-    id: number;
-    login: string;
-    avatar_url: string;
-  }[];
+  users:GitHubUser[];
   onBack: () => void;
 }
 
 export default function UserList({ users, onBack }: UserListProps) {
   const dispatch = useAppDispatch();
-  const isLoading = useAppSelector((state) => state.user.isLoading);
+  // const isLoading = useAppSelector((state) => state.user.isLoading);
   const navigate = useNavigate();
+  const [loading , setLoading] = useState(false)
 
   const { mutate: searchUserMutate } = useSearchUser();
 
   const handleUserClick = (username: string) => {
     if (!username.trim()) return;
   
-    // dispatch(setLoading(true));
+    setLoading(true)
   
     searchUserMutate(username.trim(), {
-      onSuccess: (response) => {
-        dispatch(setCurrentUser(response));
+      onSuccess: (response: {data:UserGitData}) => {
+        console.log(response, "User Git Data");
+        dispatch(setCurrentUser(response.data)); // Assuming you store user data
+        setLoading(false)
+
+        navigate(`/`);
       },
       onError: () => {
         dispatch(setError("User not found or API error."));
-      },
-      onSettled: () => {
-        dispatch(setLoading(false));
-        navigate("/"); // Safe to navigate after state update
+        setLoading(false)
+
       },
     });
   };
   
-
+if(loading) return <Loader message="user is laoding...."/>
 
   return (
     <div className="followers-list">
@@ -62,7 +63,7 @@ export default function UserList({ users, onBack }: UserListProps) {
               onClick={() => handleUserClick(user.login)}
             >
               <img
-                src={user.avatar_url}
+                src={user.avatar_url ?? user.avatar_url}
                 alt={`${user.login}'s avatar`}
                 className="follower-avatar"
               />

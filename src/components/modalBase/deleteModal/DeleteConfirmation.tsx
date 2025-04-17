@@ -1,19 +1,15 @@
 import React from "react"
 import Modal from "../ModalBase"
 import "./DeleteConfirmation.css"
+import { GitHubUser } from "../../../types"
 
-interface User {
-  id: number
-  login: string
-  avatar_url: string
-  type: string
-}
+
 
 interface DeleteConfirmationProps {
   isOpen: boolean
   onClose: () => void
   onConfirm: () => void
-  user: User | null
+  user: GitHubUser | null
 }
 
 const DeleteConfirmation: React.FC<DeleteConfirmationProps> = ({

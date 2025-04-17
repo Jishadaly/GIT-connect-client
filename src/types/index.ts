@@ -9,11 +9,13 @@ export interface HeaderProps {
 
 // ========== GitHub User Types ==========
 export interface GitHubUser {
+  _id:string
   id: number;
   githubId: number;
   login: string;
   name: string;
   avatar: string | null;
+  avatar_url:string
   location: string;
   blog: string;
   bio: string;
@@ -26,6 +28,7 @@ export interface GitHubUser {
   createdAt: string;
   updatedAt: string;
   deletedAt: string | null;
+  public_repos:number 
 }
 
 // ========== GitHub Repo Types ==========

@@ -1,27 +1,15 @@
-"use client";
-
 import { useEffect, useState } from "react";
-import { GitHubRepo } from "../../types";
+import { GitHubRepo, GitHubUser } from "../../types";
 import RepositoryCard from "../card/RepositoryCard";
 import RepositoryDetail from "../Repository/RepositoryDetail";
 import PrimaryButton from "../button/PrimaryBtn";
 import { FaUsers } from 'react-icons/fa';
 import "./profileView.css"
 import UserList from "../userList/UserList";
-import { setLoading } from "../../redux/slices/userSlice";
-import { useAppDispatch } from "../../Hooks/useStore";
-import { setLoading as setUserLoading } from "../../redux/slices/userSlice";
+
 
 interface Props {
-  user: {
-    avatar_url: string | null;
-    login: string;
-    name: string;
-    bio: string | null;
-    followers: number;
-    following: number;
-    public_repos: number;
-  };
+  user: GitHubUser;
   repos: GitHubRepo[];
   followersList: any[];
   followingList: any[];
@@ -30,10 +18,9 @@ interface Props {
 
 
 export default function UserProfileView({ user, repos, followersList, followingList }: Props) {
-  console.log(followersList, "d")
-  const [selectedRepo, setSelectedRepo] = useState(null);
+
+  const [selectedRepo, setSelectedRepo] = useState<GitHubRepo|null>(null);
   const [showList, setShowList] = useState<"followers" | "following" | null>(null);
-  const dispatch = useAppDispatch()
 
 
   useEffect(() => {
@@ -42,7 +29,7 @@ export default function UserProfileView({ user, repos, followersList, followingL
   }, [user.login]); // this runs whenever the user changes
 
 
-  const handleRepoClick = (repo) => {
+  const handleRepoClick = (repo:GitHubRepo) => {
     setSelectedRepo(repo);
   };
 
@@ -71,7 +58,7 @@ export default function UserProfileView({ user, repos, followersList, followingL
         <>
           <div className="profile">
             <div className="left-panel">
-              <img src={user.avatar} alt="Avatar" className="avatar" />
+            <img src={user.avatar ?? undefined} alt="Avatar" className="avatar" />
               <h2 className="username">{user.login}</h2>
               <PrimaryButton
                 text="View"

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import DeleteConfirmation from "../../components/modalBase/deleteModal/DeleteConfirmation"
 import "./explore.css"
 import PrimaryButton from "../../components/button/PrimaryBtn"
@@ -12,7 +12,7 @@ import { useDeleteUser } from "../../Hooks/api/useDeleteUser"
 const ExploreUsersPage: React.FC = () => {
   const { users, isLoading, error } = useExplorer()
   const { mutate: deleteUser, isPending: isDeleting } = useDeleteUser()
-  const [selectedUser, setSelectedUser] = useState<any | null>(null)
+  const [selectedUser, setSelectedUser] = useState<GitHubUser | null>(null)
   const [showModal, setShowModal] = useState<boolean>(false)
   const navigate = useNavigate()
 
