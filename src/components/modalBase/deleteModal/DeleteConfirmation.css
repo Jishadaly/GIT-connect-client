@@ -1,0 +1,50 @@
+.delete-modal {
+    text-align: center;
+  }
+  
+  .delete-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.75rem;
+  }
+  
+  .delete-message {
+    font-size: 0.95rem;
+    color: #333;
+    margin-bottom: 1.2rem;
+  }
+  
+  .delete-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .cancel-btn,
+  .confirm-btn {
+    flex: 1;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  
+  .cancel-btn {
+    background-color: #ccc;
+    color: #333;
+  }
+  
+  .confirm-btn {
+    background-color: #e74c3c;
+    color: white;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #bbb;
+  }
+  
+  .confirm-btn:hover {
+    background-color: #c0392b;
+  }
+  

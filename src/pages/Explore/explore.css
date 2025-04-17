@@ -1,0 +1,79 @@
+.explore-users {
+    padding: 1rem;
+    max-width: 900px;
+    margin: auto;
+  }
+  
+  .explore-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-align: left;
+    margin-bottom: 1rem;
+  }
+  
+  .user-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 16px;
+  }
+  
+  .user-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    background-color: #fafafa;
+  }
+  
+  .user-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+  }
+  
+  .user-login {
+    margin: 0.3rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .user-type {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 0.5rem;
+  }
+  
+  .delete-button {
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+    color: white;
+    background-color: #e74c3c;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .delete-button:hover {
+    background-color: #c0392b;
+  }
+  
+  .loading {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 2rem;
+    color: #999;
+  }
+  
+  .explore-header{
+    display: flex;
+    align-content: space-between;
+    align-items: center;
+  }
+  .no-users{
+    
+  }

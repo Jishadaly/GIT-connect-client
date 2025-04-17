@@ -1,0 +1,21 @@
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.87); /* Use a dark text color to make sure text is visible */
+}
+
+body {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa; /* Light background */
+}
+
+h2, p {
+  font-family: 'Inter', sans-serif; /* Ensure the font is applied here as well */
+  font-weight: 400;
+  color: #333; /* Set a default text color */
+  line-height: 1.5;
+}
+

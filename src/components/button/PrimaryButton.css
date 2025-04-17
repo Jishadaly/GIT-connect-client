@@ -1,0 +1,16 @@
+.primary-btn {
+    padding: 10px 20px;
+    background-color: #007bff; /* Default blue */
+    color: white;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .primary-btn:hover {
+    background-color: #0056b3;
+  }
+  

@@ -1,0 +1,67 @@
+/* src/components/Loader.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+  }
+  
+  .loader-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* vertical center */
+    align-items: center;     /* horizontal center */
+    gap: 10px;
+    text-align: center;
+  }
+  
+  .loader {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .loader div {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #0366d6;
+    animation: bounce 1.4s infinite ease-in-out;
+  }
+  
+  /* Staggering animation delay */
+  .loader div:nth-child(1) {
+    animation-delay: 0s;
+  }
+  
+  .loader div:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  
+  .loader div:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  
+  .loader div:nth-child(4) {
+    animation-delay: 0.6s;
+  }
+  
+  /* Bounce animation */
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  /* Styling for the loader message */
+  .loader-message {
+    font-size: 1rem;
+    color: #0366d6;
+    font-weight: 500;
+    margin-top: 10px;
+  }
+  

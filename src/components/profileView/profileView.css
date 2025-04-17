@@ -1,0 +1,94 @@
+.profile {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20px;
+  text-align: left;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto 20px auto;
+  padding: 1rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+/* .right-panel{
+  align-items: end;
+} */
+
+.repo-title {
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 1rem;
+  width: 100%;
+  text-align: left;
+}
+
+.repo-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+.user-page {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.user-Connections {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  color: gray;
+  font-size: 0.95rem;
+}
+
+.user-Connections p {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.profile-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 0 1rem;
+}
+
+.connection-count{
+  color: rgb(0, 0, 0);
+  font-weight: 600;
+}
+
+.connection-text{
+  color: #000000ac
+}
+.username{
+  font-weight: 900;
+  margin:0;
+}
+.left-panel{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
