@@ -59,7 +59,7 @@ return (
   <div className="explore-users">
     <div className="explore-header">
       <h2 className="explore-title">Explore GitHub Users</h2>
-      <PrimaryButton text="back" styleProps={{ height: "40px", textAlign: "center", background: "#cccccc", cursor: "pointer" }} onClick={() => navigate(-1)} />
+      <PrimaryButton text="back" styleProps={{ height: "40px", textAlign: "center", background: "#b0b8b2", cursor: "pointer" ,color:"black"}} onClick={() => navigate(-1)} />
     </div>
     {isLoading ? (
       <div className="loading">Loading users...</div>

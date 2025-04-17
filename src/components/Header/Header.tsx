@@ -18,7 +18,7 @@ const Header: React.FC = () => {
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
     if (!username.trim()) return;
-  
+    
     dispatch(setLoading(true));
     mutate(username.trim(), {
       onSuccess: (response: {data:UserGitData}) => {
@@ -32,6 +32,7 @@ const Header: React.FC = () => {
         dispatch(setLoading(false));
       },
     });
+    setUsername("")
   };
   
   

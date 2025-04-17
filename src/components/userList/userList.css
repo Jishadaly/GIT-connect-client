@@ -44,6 +44,7 @@
     border: 1px solid #e0e0e0;
     border-radius: 10px;
     background-color: #fafafa;
+    cursor: pointer;
   }
   
   .follower-avatar {
