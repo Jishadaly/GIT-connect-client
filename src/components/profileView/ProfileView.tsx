@@ -22,6 +22,8 @@ export default function UserProfileView({ user, repos, followersList, followingL
   const [selectedRepo, setSelectedRepo] = useState<GitHubRepo | null>(null);
   const [showList, setShowList] = useState<"followers" | "following" | null>(null);
 
+  console.log(user, repos , followersList )
+
 
   useEffect(() => {
     setShowList(null); // hide followers/following list

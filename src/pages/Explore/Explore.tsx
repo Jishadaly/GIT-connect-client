@@ -10,7 +10,7 @@ import { useDeleteUser } from "../../Hooks/api/useDeleteUser"
 
 
 const ExploreUsersPage: React.FC = () => {
-  const { users, isLoading, error } = useExplorer()
+  const { users, isLoading, error ,refetchUsers} = useExplorer()
   const { mutate: deleteUser, isPending: isDeleting } = useDeleteUser()
   const [selectedUser, setSelectedUser] = useState<GitHubUser | null>(null)
   const [showModal, setShowModal] = useState<boolean>(false)
@@ -30,6 +30,7 @@ const ExploreUsersPage: React.FC = () => {
         onSuccess:()=>{
           setShowModal(false)
           setSelectedUser(null)
+          refetchUsers();
         },
         onError:(error)=>{
          alert("Error deleting user")

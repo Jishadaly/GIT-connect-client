@@ -14,11 +14,12 @@ export const useExplorer = () => {
       data,     // The fetched data (users)
       isLoading, // Loading state
       error,     // Any error that might occur
+      refetch
     } = useQuery<GitHubUser[], Error>({
       queryKey: ["explorer-users"],
       queryFn: fetchUsers,
       staleTime: 1000 * 60 * 5, // cache for 5 minutes
     })
   
-    return { users:data, isLoading, error }
+    return { users:data, isLoading, error ,refetchUsers:refetch}
   }
