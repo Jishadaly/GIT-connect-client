@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { GitHubRepo } from "../../types";
 import RepositoryCard from "../card/RepositoryCard";
 import RepositoryDetail from "../Repository/RepositoryDetail";
@@ -8,6 +8,9 @@ import PrimaryButton from "../button/PrimaryBtn";
 import { FaUsers } from 'react-icons/fa';
 import "./profileView.css"
 import UserList from "../userList/UserList";
+import { setLoading } from "../../redux/slices/userSlice";
+import { useAppDispatch } from "../../Hooks/useStore";
+import { setLoading as setUserLoading } from "../../redux/slices/userSlice";
 
 interface Props {
   user: {
@@ -25,10 +28,18 @@ interface Props {
   onFollowersClick: () => void;
 }
 
-export default function UserProfileView({ user, repos,followersList,followingList, onFollowersClick }: Props) {
-  console.log(followersList ,"d")
+
+export default function UserProfileView({ user, repos, followersList, followingList }: Props) {
+  console.log(followersList, "d")
   const [selectedRepo, setSelectedRepo] = useState(null);
   const [showList, setShowList] = useState<"followers" | "following" | null>(null);
+  const dispatch = useAppDispatch()
+
+
+  useEffect(() => {
+    setShowList(null); // hide followers/following list
+    setSelectedRepo(null); // optional: reset repo view too
+  }, [user.login]); // this runs whenever the user changes
 
 
   const handleRepoClick = (repo) => {
@@ -85,7 +96,7 @@ export default function UserProfileView({ user, repos,followersList,followingLis
             </div>
           </div>
 
-          <h3 className="repo-title">Repositories { user?.public_repos > 0 ? `(${user.public_repos})` : '' } </h3>
+          <h3 className="repo-title">Repositories {user?.public_repos > 0 ? `(${user.public_repos})` : ''} </h3>
           <div className="repo-list">
             {repos.map((repo) => (
               <RepositoryCard

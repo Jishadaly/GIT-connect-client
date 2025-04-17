@@ -1,5 +1,10 @@
 // components/UserList.tsx
-import "./userList.css"
+import { useNavigate } from "react-router-dom";
+import { useSearchUser } from "../../Hooks/api/useSearchUser";
+import { useAppDispatch, useAppSelector } from "../../Hooks/useStore";
+import { setCurrentUser, setError, setLoading } from "../../redux/slices/userSlice";
+import { UserGitData } from "../../types";
+import "./userList.css";
 
 interface UserListProps {
   users: {
@@ -11,6 +16,33 @@ interface UserListProps {
 }
 
 export default function UserList({ users, onBack }: UserListProps) {
+  const dispatch = useAppDispatch();
+  const isLoading = useAppSelector((state) => state.user.isLoading);
+  const navigate = useNavigate();
+
+  const { mutate: searchUserMutate } = useSearchUser();
+
+  const handleUserClick = (username: string) => {
+    if (!username.trim()) return;
+  
+    // dispatch(setLoading(true));
+  
+    searchUserMutate(username.trim(), {
+      onSuccess: (response) => {
+        dispatch(setCurrentUser(response));
+      },
+      onError: () => {
+        dispatch(setError("User not found or API error."));
+      },
+      onSettled: () => {
+        dispatch(setLoading(false));
+        navigate("/"); // Safe to navigate after state update
+      },
+    });
+  };
+  
+
+
   return (
     <div className="followers-list">
       <div className="followers-header">
@@ -24,7 +56,11 @@ export default function UserList({ users, onBack }: UserListProps) {
       ) : (
         <div className="followers-grid">
           {users.map((user) => (
-            <div key={user.id} className="follower-card">
+            <div
+              key={user.id}
+              className="follower-card"
+              onClick={() => handleUserClick(user.login)}
+            >
               <img
                 src={user.avatar_url}
                 alt={`${user.login}'s avatar`}
@@ -32,14 +68,7 @@ export default function UserList({ users, onBack }: UserListProps) {
               />
               <div className="follower-info">
                 <h3 className="follower-login">{user.login}</h3>
-                <a
-                  href={`https://github.com/${user.login}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="follower-link"
-                >
-                  View Profile
-                </a>
+                <p className="follower-link">View Profile</p>
               </div>
             </div>
           ))}
