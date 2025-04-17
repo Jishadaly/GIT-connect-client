@@ -44,9 +44,6 @@ export default function UserProfileView({ user, repos, followersList, followingL
     setShowList(null);
   };
 
-
-  if (!user || !repos) return <p>Loading...</p>;
-
   return (
     <div className="user-page">
       {showList ? (

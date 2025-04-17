@@ -13,8 +13,6 @@ const UserProfile = () => {
 
   if(isLoading) return <Loader message="user feching"/>
 
-console.log(currentUser , "fffffffffff")
-
   if (error) {
     return (
       <div style={{ padding: "2rem", color: "red" }}>
